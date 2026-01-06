@@ -10,76 +10,54 @@
 
 ## 🚀 Quick Start
 
-### Step 1: Clone & Setup
+### Step 1: Clone & Run Setup
 
 ```bash
 git clone https://github.com/sfc-gh-skuppusamy/data-products-code-sample
 cd data-products-code-sample
+
+# Run setup via SnowSQL (handles everything including file uploads)
+snowsql -f setup.sql
 ```
 
-Run in **Snowsight** or **SnowSQL** as `ACCOUNTADMIN`:
+> **Note**: The `setup.sql` script includes `PUT` commands which require SnowSQL CLI.
+> It creates database, schemas, sample data, uploads files to stages, and deploys the Streamlit app.
 
-```sql
--- Creates database, sample data, stages, and Streamlit app
-@setup.sql
-```
-
-### Step 2: Upload Files to Stages
-
-After running `setup.sql`, upload these files using Snowsight:
-
-| File | Upload To |
-|------|-----------|
-| `02_design/churn_risk_data_contract.yaml` | Stages → `DATA_CONTRACTS` → "+ Files" |
-| `03_deliver/01_dbt_generator_app.py` | Stages → `STREAMLIT_APPS` → "+ Files" |
-
-Or use SnowSQL:
-```bash
-PUT file://02_design/churn_risk_data_contract.yaml @RETAIL_BANKING_DB.GOVERNANCE.data_contracts AUTO_COMPRESS=FALSE;
-PUT file://03_deliver/01_dbt_generator_app.py @RETAIL_BANKING_DB.GOVERNANCE.streamlit_apps AUTO_COMPRESS=FALSE;
-```
-
-### Step 3: Generate Code via Streamlit App
+### Step 2: Generate Code via Streamlit App
 
 1. Open **Snowsight** → **Projects** → **Streamlit** → `dbt_code_generator`
 2. Select `churn_risk_data_contract.yaml` from the stage dropdown
 3. Click **Generate All Outputs**
-4. Download/copy the generated `model.sql`
+4. Copy the generated `model.sql`
 
-### Step 4: Deploy Data Product
+### Step 3: Deploy Data Product
 
-Run the generated model SQL in Snowsight to create the `RETAIL_CUSTOMER_CHURN_RISK` table.
+Run the generated model SQL in Snowsight to create the `RETAIL_CUSTOMER_CHURN_RISK` table:
 
-**Option A: Snowflake dbt Projects**
-```sql
--- Import generated SQL into dbt project, then:
-dbt run --select retail_customer_churn_risk
-```
-
-**Option B: Direct SQL**
 ```sql
 -- Paste and run the generated model.sql in Snowsight
+-- This creates DATA_PRODUCTS.RETAIL_CUSTOMER_CHURN_RISK
 ```
 
-### Step 5: Apply Governance & Monitoring
+### Step 4: Apply Governance & Monitoring
 
-Run these scripts in order:
+Run these scripts in Snowsight:
 
 ```sql
--- 1. Apply masking policies
-@03_deliver/02_generated_output/masking_policies.sql
+-- 1. Apply masking policies (from generated output)
+-- File: 03_deliver/02_generated_output/masking_policies.sql
 
 -- 2. Create semantic view and marketplace listing
-@03_deliver/03_semantic_view_marketplace.sql
+-- File: 03_deliver/03_semantic_view_marketplace.sql
 
 -- 3. Setup monitoring with Data Metric Functions
-@04_operate/monitoring_observability.sql
+-- File: 04_operate/monitoring_observability.sql
 ```
 
 ### ✅ Done!
 
 You now have a fully operational data product with:
-- Churn risk scores for 10K customers
+- Churn risk scores for 1K customers
 - Semantic view for Cortex Analyst
 - Data quality monitoring via DMFs
 - PII masking policies
@@ -151,12 +129,7 @@ This repository provides a **working example** of the Retail Customer Churn Risk
 ```
 data-products-code-sample/
 │
-├── setup.sql                          # ⭐ ONE-CLICK SETUP SCRIPT
-│
-├── 00_setup/                          # Individual setup scripts
-│   ├── 01_deploy_streamlit_app.sql
-│   ├── 02_create_sample_data.sql
-│   └── README.md
+├── setup.sql                          # ⭐ ONE-CLICK SETUP (run via SnowSQL)
 │
 ├── 01_discover/                       # DISCOVER phase
 │   └── data_product_canvas.yaml       #   Business context & stakeholders
