@@ -23,7 +23,7 @@ metadata:
     environment: production
     data_classification: confidential
   annotations:
-    created_by: "sarah.mitchell@bank.com"
+    created_by: "alex.morgan@bank.com"
     last_updated: "2024-01-15T10:00:00Z"
     business_purpose: "Predict and explain customer churn risk for retention"
     canvas_reference: "01_discover/data_product_canvas.yaml"
@@ -40,8 +40,8 @@ spec:
       transactional patterns, and engagement data to produce explainable 
       risk scores that power retention campaigns and branch interventions.
     owner:
-      name: "Sarah Mitchell"
-      email: "sarah.mitchell@bank.com"
+      name: "Alex Morgan"
+      email: "alex.morgan@bank.com"
       team: "Retail Customer Analytics"
       slack: "#retail-analytics"
     contact:

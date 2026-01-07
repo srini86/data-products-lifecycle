@@ -70,7 +70,7 @@ DIMENSIONS (
 -- Add comment to the semantic view
 COMMENT ON SEMANTIC VIEW retail_customer_churn_risk_sv IS 
 'Retail Customer Churn Risk Data Product - Semantic View for Cortex Analyst.
-Contract Version: 1.0.0 | Owner: sarah.mitchell@bank.com | SLA: Daily refresh by 6 AM UTC
+Contract Version: 1.0.0 | Owner: alex.morgan@bank.com | SLA: Daily refresh by 6 AM UTC
 
 Example questions:
 - What is the average churn risk score by customer segment?

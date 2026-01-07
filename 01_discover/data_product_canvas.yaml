@@ -62,10 +62,10 @@ problem_statement:
 # ============================================================================
 stakeholders:
   data_product_owner:
-    name: "Sarah Mitchell"
+    name: "Alex Morgan"
     role: "Head of Retail Customer Analytics"
     department: "Retail Banking"
-    email: "sarah.mitchell@bank.com"
+    email: "alex.morgan@bank.com"
   
   multi_disciplinary_team:
     - role: "Domain SME - Risk"

@@ -25,7 +25,7 @@ metadata:
     environment: production
     data_classification: confidential
   annotations:
-    created_by: "sarah.mitchell@bank.com"
+    created_by: "alex.morgan@bank.com"
     last_updated: "2024-07-15T10:00:00Z"
     business_purpose: "Predict and explain customer churn risk with CLV prioritization"
     canvas_reference: "01_discover/data_product_canvas.yaml"
@@ -38,7 +38,7 @@ metadata:
   changelog:
     - version: "2.0.0"
       date: "2024-07-15"
-      author: "sarah.mitchell@bank.com"
+      author: "alex.morgan@bank.com"
       type: "feature"
       breaking_change: false
       changes:
@@ -56,7 +56,7 @@ metadata:
         4. FCA Consumer Duty requires vulnerability identification
     - version: "1.0.0"
       date: "2024-01-15"
-      author: "sarah.mitchell@bank.com"
+      author: "alex.morgan@bank.com"
       type: "initial"
       changes:
         - "Initial release with 32 columns"
@@ -81,8 +81,8 @@ spec:
       - Action confidence scoring for RM escalation
       - Regulatory compliance with vulnerability flags
     owner:
-      name: "Sarah Mitchell"
-      email: "sarah.mitchell@bank.com"
+      name: "Alex Morgan"
+      email: "alex.morgan@bank.com"
       team: "Retail Customer Analytics"
       slack: "#retail-analytics"
     contact:

@@ -35,7 +35,7 @@ models:
     - data_product
     - generated_from_contract
   meta:
-    owner: sarah.mitchell@bank.com
+    owner: alex.morgan@bank.com
     sla: Data updated daily by 6 AM UTC
     contract_version: 1.0.0
   columns:
